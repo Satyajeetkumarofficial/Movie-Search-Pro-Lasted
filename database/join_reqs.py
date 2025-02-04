@@ -1,13 +1,18 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# (c) @AlbertEinsteinTG
+
 import motor.motor_asyncio
-from info import AUTH_CHANNEL, OTHER_DB_URI
+from info import REQ_CHANNEL
 
 class JoinReqs:
 
     def __init__(self):
-        if OTHER_DB_URI:
-            self.client = motor.motor_asyncio.AsyncIOMotorClient(OTHER_DB_URI)
+        from info import JOIN_REQS_DB
+        if JOIN_REQS_DB:
+            self.client = motor.motor_asyncio.AsyncIOMotorClient(JOIN_REQS_DB)
             self.db = self.client["JoinReqs"]
-            self.col = self.db[str(AUTH_CHANNEL)]
+            self.col = self.db[str(REQ_CHANNEL)]
         else:
             self.client = None
             self.db = None
@@ -39,3 +44,4 @@ class JoinReqs:
 
     async def get_all_users_count(self):
         return await self.col.count_documents({})
+
