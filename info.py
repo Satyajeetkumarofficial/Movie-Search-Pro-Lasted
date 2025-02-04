@@ -42,7 +42,7 @@ AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_chan
 
 # This Channel Is For When User Request File With command or hashtag like - /request or #request
 reqst_channel = environ.get('REQST_CHANNEL_ID', '-1002459120948')
-REQST_CHANNEL = int(reqst_channel) if reqst_channel and id_pattern.search(reqst_channel) else None
+REQST_CHANNEL = int(reqst_channel) if reqst_channel and id_pattern.search(reqst_channel)
 
 # This Is Your Bot Support Group Id , Here Bot Will Not Give File Because This Is Support Group.
 support_chat_id = environ.get('SUPPORT_CHAT_ID', '')
