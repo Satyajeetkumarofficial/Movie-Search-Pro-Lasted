@@ -13,7 +13,7 @@ from database.users_chats_db import db
 
 @Client.on_message(filters.command('clone'))
 async def clone_menu(client, message):
-    if CLONE_MODE == False:
+    if CLONE_MODE == True:
         return
     if await db.is_clone_exist(message.from_user.id):
         return await message.reply("**ʏᴏᴜ ʜᴀᴠᴇ ᴀʟʀᴇᴀᴅʏ ᴄʟᴏɴᴇᴅ ᴀ ʙᴏᴛ ᴅᴇʟᴇᴛᴇ ғɪʀsᴛ ɪᴛ ʙʏ /deleteclone**")
