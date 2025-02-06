@@ -696,15 +696,8 @@ async def start(client, message):
 
 @Client.on_message(filters.command('channel') & filters.user(ADMINS))
 async def channel_info(bot, message):
-    if isinstance(CHANNELS, (int, str)):
-        channels = [CHANNELS]
-    elif isinstance(CHANNELS, list):
-        channels = CHANNELS
-    else:
-        raise ValueError("Unexpected type of CHANNELS")
-
     text = '📑 **Indexed channels/groups**\n'
-    for channel in channels:
+    for channel in CHANNELS:
         chat = await bot.get_chat(channel)
         if chat.username:
             text += '\n@' + chat.username
